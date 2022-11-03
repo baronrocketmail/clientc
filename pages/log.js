@@ -3,6 +3,17 @@ import React from "react";
 import Links from "../app/(components)/Links";
 import "../app/globals.css";
 import fetch from 'node-fetch';
+import {
+  DataGridPremium,
+  GridToolbar,
+  useGridApiRef,
+  useKeepGroupedColumnsHidden,
+} from '@mui/x-data-grid-premium';
+import Box from '@mui/material/Box';
+import { useDemoData } from '@mui/x-data-grid-generator';
+
+
+
 
 export async function getStaticProps(){
 
@@ -23,10 +34,33 @@ export default function Log(props){
     }
     links.push({label: "...", href: '/'})
 
+    const { data, loading } = useDemoData({
+        dataSet: 'Commodity',
+        rowLength: 100,
+        editable: true,
+        visibleFields: [
+            'commodity',
+            'quantity',
+            'filledQuantity',
+            'status',
+            'isFilled',
+            'unitPrice',
+            'unitPriceCurrency',
+            'subTotal',
+            'feeRate',
+            'feeAmount',
+            'incoTerm',
+            ],
+    });
+
+
     return(
             <div className={myFont.className}>
                 <Links links = {links}/>
-                <h1>an extremeley advanced table </h1>
+                <Box sx ={{height: 420, width: "100%" }}>
+                    <DataGridPremium {...data} />
+
+                </Box>
             </div>
     )
 }
