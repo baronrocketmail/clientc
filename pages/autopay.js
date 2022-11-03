@@ -1,11 +1,8 @@
 import "../app/globals.css"
 import fetch from 'node-fetch';
 import {myFont} from "../app/myFont.js";
-
-
 import Links from "../app/(components)/Links.js";
-
-import {use, useEffect, useMemo, useState} from "react"
+import { useEffect, useState} from "react"
 import {db} from "../app/(components)/firestoreInit.js";
 import { doc, onSnapshot } from "firebase/firestore";
 export async function getStaticProps(){
@@ -31,6 +28,7 @@ export default function Autopay(props){
     },[])
 
     const [autopayActive, setAutopayActive] = useState(props.initialAutopayActive)
+
 
     let links = [{label: "<---", href: "/"}, {label:  autopayActive ? ("autopay: active") : ("autopay: inactive"), href: "/"}]
 
