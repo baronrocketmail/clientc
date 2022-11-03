@@ -4,12 +4,8 @@ import {myFont} from "../app/myFont.js";
 
 
 import Links from "../app/(components)/Links.js";
-//import Login from "../(components)/Login";
-import useSWR from 'swr'
 
 import {use, useEffect, useMemo, useState} from "react"
-import {propertyID} from "public/constants.mjs"
-import {initializeApp} from "firebase/app";
 import {db} from "../app/(components)/firestoreInit.js";
 import { doc, onSnapshot } from "firebase/firestore";
 export async function getStaticProps(){
