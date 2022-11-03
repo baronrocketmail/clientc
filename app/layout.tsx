@@ -2,7 +2,7 @@ import localFont from '@next/font/local';
 import './globals.css'
 
 
-const myFont = localFont({ src: './GoldmanSans_W_Th.woff2' , preload: true , variable: "--goldmanSansLight"});
+const myFont = localFont({ src: './GoldmanSans_W_Th.woff2' , preload: true , variable: "--goldmanSansLight", display: "swap"});
 
 export default function RootLayout({ children }: {
   children: React.ReactNode;
