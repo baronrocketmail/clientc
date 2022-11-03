@@ -1,6 +1,6 @@
 import "../app/globals.css"
 import fetch from 'node-fetch';
-import {myFont} from "../app/layout";
+import {myFont} from "../app/myFont.js";
 
 
 import Links from "../app/(components)/Links.js";

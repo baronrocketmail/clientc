@@ -1,8 +1,6 @@
 import localFont from '@next/font/local';
 import './globals.css'
-
-
-export const myFont = localFont({ src: './GoldmanSans_Th.ttf', variable: "--goldmanSansLight", display: "swap", fallback: ["arial"]});
+import {myFont} from "./myFont";
 
 export default function RootLayout({ children }: {
   children: React.ReactNode;
