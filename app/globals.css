@@ -20,6 +20,12 @@ a {
 * {
   box-sizing: border-box;
 }
+.links{
+    margin-top: 23vh;
+    font-size: 65px;
+    text-align: center;
+}
+
 
 @media (prefers-color-scheme: dark) {
   html {

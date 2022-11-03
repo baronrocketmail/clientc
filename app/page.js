@@ -21,8 +21,15 @@ export default async function Page(){
 
     if (applicationsOpen) {
         links.push({label: "apply", href: "/apply"})
+        links.push({label: "lease", href: "/lease"})
+        links.push({label: "...", href: "/explainer"})
+
     } else {
         links.push({label: "autopay", href: "/autopay"})
+        for(let elem in unpaid){
+            links.push({label: unpaid[elem].name, href: unpaid[elem].url})
+        }
+        links.push({label: "...", href: "/log"})
     }
 
 
