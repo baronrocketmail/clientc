@@ -2,7 +2,7 @@ import localFont from '@next/font/local';
 import './globals.css'
 
 
-const myFont = localFont({ src: './Poor-Story-Regular.woff2', variable: "--goldmanSansLight", display: "swap", fallback: ["arial"]});
+const myFont = localFont({ src: './GoldmanSans_W_Th.woff2', variable: "--goldmanSansLight", display: "swap", fallback: ["arial"]});
 
 export default function RootLayout({ children }: {
   children: React.ReactNode;
