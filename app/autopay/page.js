@@ -19,6 +19,7 @@ export default function Page(){
             setAutopayActive(doc.data().autopay);
             console.log("Current data: ", doc.data());
         });
+        return () => unsub()
     },[])
 
 //    const initialAutopayActive = use(getAutopayActive())
