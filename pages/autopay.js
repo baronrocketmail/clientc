@@ -14,15 +14,15 @@ export async function getStaticProps(){
     const phoneNumbers = await fetch("https://undefxx.com/api/info/phoneNumbers").then(x => x.json())
 
 
-    let authContacts = {... emailAddresses, ... phoneNumbers}
-    let buttons = []
-    for(let elem in authContacts) {
-        if (authContacts[elem].indexOf("@") != -1) buttons.push(< button className = {"card"} onClick = {() => alert("@")}><p>{authContacts[elem]}</p></button>)
-        else buttons.push(<button className={"card"} onClick = {() => alert("()")}><p>{authContacts[elem]}</p></button>)
-    }
+//    let authContacts = {... emailAddresses, ... phoneNumbers}
+//    let buttons = []
+//    for(let elem in authContacts) {
+//        if (authContacts[elem].indexOf("@") != -1) buttons.push(< button className = {"card"} onClick = {() => alert("@")}><p>{authContacts[elem]}</p></button>)
+//        else buttons.push(<button className={"card"} onClick = {() => alert("()")}><p>{authContacts[elem]}</p></button>)
+//    }
 
     return {
-        props: { initialAutopayActive, emailAddresses, phoneNumbers, buttons},
+        props: { initialAutopayActive, emailAddresses, phoneNumbers},
         revalidate: 1
     }
 }
@@ -49,7 +49,6 @@ export default function Autopay(props){
             <div className={myFont.className}>
             <Links links = {links}/>
             <div className={"grid"}>
-             {props.buttons}
             </div>
             </div>
             )
