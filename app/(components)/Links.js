@@ -6,8 +6,10 @@ import {useEffect} from "react"
 
 export default function Links(props){
 
+    const router = useRouter();
+
+
     useEffect(()=>{
-        const router = useRouter();
         if (props.links[0].label.indexOf("<") != -1) router.prefetch("/")
         else {
             router.prefetch("/autopay")
