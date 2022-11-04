@@ -2,15 +2,15 @@ import Links from "./(components)/Links";
 
 
 async function getName(){
-    return fetch("https://undefxx.com/api/info/name", { next: { revalidate: 1 } }).then(x=> x.json());
+    return await fetch("https://undefxx.com/api/info/name", { next: { revalidate: 1 } }).then(x=> x.json());
 }
 
 async function getUnpaid(){
-    return fetch("https://undefxx.com/api/payments/unpaid", { next: { revalidate: 1 } }).then(x=> x.json());
+    return await fetch("https://undefxx.com/api/payments/unpaid", { next: { revalidate: 1 } }).then(x=> x.json());
 }
 
 async function getApplicationsOpen(){
-    return fetch("https://undefxx.com/api/info/applicationsOpen", { next: { revalidate: 1 } }).then(x=> x.json());
+    return await fetch("https://undefxx.com/api/info/applicationsOpen", { next: { revalidate: 1 } }).then(x=> x.json());
 }
 
 export default async function Page(){
