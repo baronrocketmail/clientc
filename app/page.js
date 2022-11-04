@@ -1,5 +1,4 @@
 import Links from "./(components)/Links";
-import { useRouter } from 'next/navigation';
 
 
 async function getName(){
@@ -16,8 +15,6 @@ async function getApplicationsOpen(){
 
 export default async function Page(){
 
-    const router = useRouter();
-
     const name = await getName()
     const unpaid = await getUnpaid()
     const applicationsOpen = await getApplicationsOpen()
@@ -26,9 +23,9 @@ export default async function Page(){
 
     router.prefetch("/autopay")
     router.prefetch("/log")
-//    for(let elem in unpaid) {
-//        router.prefetch("/" + unpaid[elem].url)
-//    }
+    for(let elem in unpaid) {
+        router.prefetch("/" + unpaid[elem].url)
+    }
 
 
     if (applicationsOpen) {
