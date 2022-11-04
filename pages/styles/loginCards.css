@@ -22,12 +22,15 @@
 
 }
 
-/*.card:hover,*/
-/*.card:focus,*/
-/*.card:active {*/
+.card:hover,
+.card:focus,
+.card:active {
 /*    color: #0070f3;*/
 /*    border-color: #0070f3;*/
-/*}*/
+    color: #A2AAAD;
+    border-color: #A2AAAD;
+
+}
 
 .card h2 {
     margin: 0 0 1rem 0;
