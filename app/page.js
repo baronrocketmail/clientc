@@ -23,8 +23,6 @@ export default async function Page(){
     let links = [{label: name, href: "/"}]
     let dynamicRoutes = []
 
-
-
     if (applicationsOpen) {
         links.push({label: "apply", href: "/apply"})
         links.push({label: "lease", href: "/lease"})
