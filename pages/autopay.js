@@ -24,7 +24,6 @@ export default function Autopay(props){
     const [autopayActive, setAutopayActive] = useState(props.initialAutopayActive)
     const [authContacts, setAuthContacts] = useState({... props.emailAddresses, ... props.phoneNumbers})
 
-    let authContacts = {... emailAddresses, ... phoneNumbers}
     let buttons = []
     for(let elem in authContacts) {
         if (authContacts[elem].indexOf("@") != -1) buttons.push(< button className = {"card"} onClick = {() => alert("@")}><p>{authContacts[elem]}</p></button>)
