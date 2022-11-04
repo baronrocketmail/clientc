@@ -13,14 +13,6 @@ export async function getStaticProps(){
     const emailAddresses = await fetch("https://undefxx.com/api/info/emailAddresses").then(x => x.json())
     const phoneNumbers = await fetch("https://undefxx.com/api/info/phoneNumbers").then(x => x.json())
 
-
-//    let authContacts = {... emailAddresses, ... phoneNumbers}
-//    let buttons = []
-//    for(let elem in authContacts) {
-//        if (authContacts[elem].indexOf("@") != -1) buttons.push(< button className = {"card"} onClick = {() => alert("@")}><p>{authContacts[elem]}</p></button>)
-//        else buttons.push(<button className={"card"} onClick = {() => alert("()")}><p>{authContacts[elem]}</p></button>)
-//    }
-
     return {
         props: { initialAutopayActive, emailAddresses, phoneNumbers},
         revalidate: 1
@@ -30,8 +22,14 @@ export async function getStaticProps(){
 export default function Autopay(props){
 
     const [autopayActive, setAutopayActive] = useState(props.initialAutopayActive)
-//    const [authContacts, setAuthContacts] = useState({... props.emailAddresses, ... props.phoneNumbers})
+    const [authContacts, setAuthContacts] = useState({... props.emailAddresses, ... props.phoneNumbers})
 
+    let authContacts = {... emailAddresses, ... phoneNumbers}
+    let buttons = []
+    for(let elem in authContacts) {
+        if (authContacts[elem].indexOf("@") != -1) buttons.push(< button className = {"card"} onClick = {() => alert("@")}><p>{authContacts[elem]}</p></button>)
+        else buttons.push(<button className={"card"} onClick = {() => alert("()")}><p>{authContacts[elem]}</p></button>)
+    }
 
     useEffect(() => {
         const unsub = onSnapshot(doc(db, "/units/18572 Cull Canyon Rd/info", "info"), (doc) => {
@@ -49,6 +47,7 @@ export default function Autopay(props){
             <div className={myFont.className}>
             <Links links = {links}/>
             <div className={"grid"}>
+            {buttons}
             </div>
             </div>
             )

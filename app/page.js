@@ -21,11 +21,6 @@ export default async function Page(){
 
     let links = [{label: name, href: "/"}]
 
-    router.prefetch("/autopay")
-    router.prefetch("/log")
-    for(let elem in unpaid) {
-        router.prefetch("/" + unpaid[elem].url)
-    }
 
 
     if (applicationsOpen) {
