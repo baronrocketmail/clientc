@@ -5,6 +5,8 @@ import Links from "../app/(components)/Links.js";
 import { useEffect, useState} from "react"
 import {db} from "../app/(components)/firestoreInit.js";
 import { doc, onSnapshot } from "firebase/firestore";
+import "./styles/loginCards.css"
+
 export async function getStaticProps(){
 
     const initialAutopayActive = await fetch("https://undefxx.com/api/info/autopay").then(x => x.json())
@@ -19,6 +21,15 @@ export async function getStaticProps(){
 //
 export default function Autopay(props){
 
+    const [autopayActive, setAutopayActive] = useState(props.initialAutopayActive)
+    const [authContacts, setAuthContacts] = useState({... props.emailAddresses, ... props.phoneNumbers})
+
+    let buttons = []
+    for(let elem in authContacts) {
+        if (authContacts[elem].indexOf("@") != -1) buttons.push(< button className = {"card"} onClick = {() => alert("@")}><p>{authContacts[elem]}</p></button>)
+        else buttons.push(<button className={"card"} onClick = {() => alert("()")}><p>{authContacts[elem]}</p></button>)
+    }
+
     useEffect(() => {
         const unsub = onSnapshot(doc(db, "/units/18572 Cull Canyon Rd/info", "info"), (doc) => {
             setAutopayActive(doc.data().autopay);
@@ -27,7 +38,6 @@ export default function Autopay(props){
         return () => unsub()
     },[])
 
-    const [autopayActive, setAutopayActive] = useState(props.initialAutopayActive)
 
 
     let links = [{label: "<---", href: "/"}, {label:  autopayActive ? ("autopay: active") : ("autopay: inactive"), href: "/"}]
@@ -35,6 +45,9 @@ export default function Autopay(props){
     return(
             <div className={myFont.className}>
             <Links links = {links}/>
+            <div className={"grid"}>
+             {buttons}
+            </div>
             </div>
             )
 }
