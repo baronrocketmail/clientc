@@ -1,4 +1,6 @@
 import Links from "./(components)/Links";
+import { useRouter } from 'next/navigation';
+
 
 async function getName(){
     return fetch("https://undefxx.com/api/info/name", { next: { revalidate: 1 } }).then(x=> x.json());
@@ -13,11 +15,21 @@ async function getApplicationsOpen(){
 }
 
 export default async function Page(){
+
+    const router = useRouter();
+
     const name = await getName()
     const unpaid = await getUnpaid()
     const applicationsOpen = await getApplicationsOpen()
 
     let links = [{label: name, href: "/"}]
+
+    router.prefetch("/autopay")
+    router.prefetch("/log")
+    for(let elem in unpaid) {
+        router.prefetch("/" + unpaid[elem].url)
+    }
+
 
     if (applicationsOpen) {
         links.push({label: "apply", href: "/apply"})
