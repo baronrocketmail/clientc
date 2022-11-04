@@ -5,6 +5,8 @@
     justify-content: center;
     flex-wrap: wrap;
     max-width: 1200px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .card {
@@ -19,7 +21,6 @@
     max-width: 300px;
     background: none;
     font-family: var(--goldmanSansLight);
-
 }
 
 /*.card:hover,*/

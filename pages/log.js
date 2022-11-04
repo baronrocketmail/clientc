@@ -57,7 +57,7 @@ export default function Log(props){
     return(
             <div className={myFont.className}>
                 <Links links = {links}/>
-                <Box className={"dataGrid"} sx ={{height: 420, width: 540 }}>
+                <Box className={"dataGrid"} sx ={{height: 420, width: 1200 }}>
                     <DataGridPremium {...data} />
                 </Box>
             </div>
