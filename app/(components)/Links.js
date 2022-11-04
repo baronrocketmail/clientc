@@ -8,17 +8,14 @@ export default function Links(props){
 
     const router = useRouter();
 
-
-    useEffect(()=>{
-        if (props.links[0].label.indexOf("<") != -1) router.prefetch("/")
-        else {
-            router.prefetch("/autopay")
-            router.prefetch("/log")
-            for(let elem in props.dynamicRoutes){
-                router.prefetch(props.dynamicRoutes[elem])
-            }
+    if (props.links[0].label.indexOf("<") != -1) router.prefetch("/")
+    else {
+        router.prefetch("/autopay")
+        router.prefetch("/log")
+        for(let elem in props.dynamicRoutes){
+            router.prefetch(props.dynamicRoutes[elem])
         }
-    }, [])
+    }
 
     let result = []
     for (let elem in props.links){
