@@ -20,6 +20,7 @@ export default async function Page(){
     const applicationsOpen = await getApplicationsOpen()
 
     let links = [{label: name, href: "/"}]
+    let dynamicRoutes = []
 
 
 
@@ -32,6 +33,7 @@ export default async function Page(){
         links.push({label: "autopay", href: "/autopay"})
         for(let elem in unpaid){
             links.push({label: unpaid[elem].name, href: unpaid[elem].url})
+            dynamicRoutes.push("/" + unpaid[elem].url)
         }
         links.push({label: "...", href: "/log"})
     }
@@ -39,7 +41,7 @@ export default async function Page(){
 
     return(
             <>
-            <Links links ={links}/>
+            <Links links ={links} dynamicRoutes = {dynamicRoutes}/>
             </>
     )
 }
